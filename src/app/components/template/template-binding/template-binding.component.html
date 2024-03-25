@@ -1,0 +1,20 @@
+<p>template-binding works!</p>
+<h2> template h2 </h2>
+  <h3> template h3 </h3>
+  {{name}}
+  {{age}}
+
+  <p>{{age}}</p>
+
+  <button [disabled]="isDisabled">botão</button>
+  <button [disabled]="isDisabled" (click)="sum()" >somar</button>
+
+  <input (keydown.shift.t) = "oneKeyDown($event)"/>
+
+  <div style=" background: blue; width: 150px; height: 150px; margin-top: 10px;" (mousemove) = "onMouseMove($event)">
+  </div>
+
+  <h3>two-way biding</h3>
+ <input [(ngModel)]="name"  />
+
+  {{name}}
