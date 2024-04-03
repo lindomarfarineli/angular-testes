@@ -1,0 +1,118 @@
+<h1>template-control-flow works!</h1>
+
+<h2> IF, For </h2>
+
+<p>Nova Forma</p>
+@if(isTrue){
+    <p>Sim é igual</p>
+}@else {
+    <p>não, não é</p>
+}
+
+<p>Forma Antiga</p>
+
+<ng-container **ngIf="isTrue; else isFalse">
+    <p>Sim é igual</p>
+</ng-container>
+<ng-template #isfalse>
+    <p>não, não é</p>
+</ng-template>
+
+@if(loadingData$ | async; as data) {    
+    <ul>
+        @for(item of data; track item){
+            <li>{{item}}</li>
+        }
+    </ul>
+
+} @else {
+    <p>carregando ....</p>
+}
+
+<p>---------------------------------------</p>
+<ul>
+    @for(item of loadingData$ | async; track item){
+        <li>{{item}}</li>
+    }@empty {
+        <li>não contem valores</li>
+    }
+</ul>
+
+<P> Forma Antiga de if </P>
+<ng-container *ngIf="loadingData$ | async as data; else loading">
+    <ul>
+        <ng-container *ngFor="let item of data; trackBy: trackByFn">
+            <li>
+                <p>{{item}}</p>
+            </li>
+            
+        </ng-container>
+    </ul>    
+    
+</ng-container>
+
+<ng-template #loading>
+    <p>Carregando ....</p>
+</ng-template>
+
+@for(item of itens; track item.name;
+    let i = $index;
+    let c = $count;
+    let f = $first;
+    let l = $last;
+    let e = $even;
+    let o = $odd;
+    ){
+        <p>{{item.name}}</p>
+        <p>index - {{i}}</p>
+        <p>count - {{c}}</p>
+        <p>first - {{f}}</p>
+        <p>last - {{l}}</p>
+        <p>even - {{e}}</p>
+        <p>odd - {{o}}</p>
+    }@empty {
+        <li>não contem valores</li>
+    }
+
+    @for(item of itens; track item.name;){
+        <p>{{item.name}}</p>        
+    }@empty {
+        <li>não contem valores</li>
+    }
+
+    <hr>
+
+<ng-container
+ *ngFor="
+    let item of itens; 
+    let i = index;
+    let c = count;
+    let f = first;
+    let l = last;
+    let e = even;
+    let o = odd;
+    trackBy: trackByFn;">
+    <p>{{item.name}}</p>
+    <p>index - {{i}}</p>
+    <p>count - {{c}}</p>
+    <p>first - {{f}}</p>
+    <p>last - {{l}}</p>
+    <p>even - {{e}}</p>
+    <p>odd - {{o}}</p>
+</ng-container>
+
+<input #name type="text">
+<button (click)="addNewName(name.value)">Add Name</button>
+
+@switch (condition) {
+    @case ("A") {
+        <p>A letra é A</p>
+    }
+    @case ("B") {
+        <p>A letra é B</p>
+    }
+    @default {
+        <P>Letra não encontrada</P>
+    }
+
+}
