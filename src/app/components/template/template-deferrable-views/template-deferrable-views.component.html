@@ -1,0 +1,16 @@
+
+<h2 >Teste</h2>
+
+<button (click)="isTrue = true">Mostrar</button>
+
+@defer (when isTrue) {
+    <app-template-control-flow/> 
+}@placeholder {
+    <p>Mostrar antes de carregar algo</p>
+}@loading {
+    <p>Loading .....</p>
+}@error {
+    <p>Loading filed!!</p>
+}
+
+
